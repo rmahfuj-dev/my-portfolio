@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "projectName": "StudyMate",
+        "title": "StudyMate is a platform to find online study partner",
+        "image": "./images/site1.png",
+        "desc": " ",
+        "links": {
+            "github": "https://github.com",
+            "liveLink": "https://app.netlify.app"
+        }
+    },
+    {
+        "id": 2,
+        "projectName": "StudyMate",
+        "title": "StudyMate is a platform to find online study partner",
+        "image": "./images/site1.png",
+        "desc": " ",
+        "links": {
+            "github": "https://github.com",
+            "liveLink": "https://app.netlify.app"
+        }
+    },
+    {
+        "id": 3,
+        "projectName": "StudyMate",
+        "title": "StudyMate is a platform to find online study partner",
+        "image": "./images/site1.png",
+        "desc": " ",
+        "links": {
+            "github": "https://github.com",
+            "liveLink": "https://app.netlify.app"
+        }
+    },
+    {
+        "id": 4,
+        "projectName": "StudyMate",
+        "title": "StudyMate is a platform to find online study partner",
+        "image": "./images/site1.png",
+        "desc": " ",
+        "links": {
+            "github": "https://github.com",
+            "liveLink": "https://app.netlify.app"
+        }
+    }
+]
