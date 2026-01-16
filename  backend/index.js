@@ -1,11 +1,17 @@
-require('dotenv').config()
+
 const express = require('express')
+require('dotenv').config()
 const cors = require('cors')
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express()
 const port = process.env.PORT
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 
 app.get('/', (req, res) => {
   res.send("Server is active")
@@ -28,8 +34,25 @@ async function run() {
 
     // api for getting all data
     app.get("/projects", async (req, res) => {
-      const query = await projects.find({}).toArray()
-      res.status(200).json(query)
+      try {
+        const query = await projects.find({}, { projection: { desc: 0 } }).toArray()
+        res.status(200).json(query)
+      } catch {
+        res.status(404).json({ message: "data not found" })
+      }
+
+    })
+
+
+    // api for project details
+    app.get("/projects/:id", async (req, res) => {
+      try {
+        const id = req.params.id
+        console.log(id)
+        const query = await projects.findOne({ _id: new ObjectId(id) })
+        res.status(200).json(query)
+      }
+      catch { }
     })
   } finally {
   }
