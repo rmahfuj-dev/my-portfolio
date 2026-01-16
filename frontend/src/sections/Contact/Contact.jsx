@@ -10,6 +10,8 @@ import Container from '../../components/Container';
 import { FaFacebook, FaGit, FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { useForm } from 'react-hook-form';
 import emailjs from "@emailjs/browser";
+import Swal from 'sweetalert2'
+
 
 
 const Contacat = () => {
@@ -29,8 +31,12 @@ const Contacat = () => {
             )
             .then(
                 (result) => {
-                    console.log("Email sent:", result.text);
-                    alert("Message sent successfully!");
+                    Swal.fire({
+                        title: "Messge Sent",
+                        text: "I will contact you as soon as possible",
+                        icon: 'success',
+                        confirmButtonText: "Close"
+                    })
                     reset(); // clear form
                 },
                 (error) => {
