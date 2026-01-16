@@ -2,15 +2,44 @@ import React from 'react';
 import {
     MdMail,
     MdCall,
-    MdLocationOn,
     MdSend,
 } from 'react-icons/md';
 
 // Import the custom Container component
 import Container from '../../components/Container';
 import { FaFacebook, FaGit, FaGithub, FaLinkedin } from 'react-icons/fa6';
+import { useForm } from 'react-hook-form';
+import emailjs from "@emailjs/browser";
+
 
 const Contacat = () => {
+    const { handleSubmit, register } = useForm()
+    const onSubmit = (data) => {
+        emailjs
+            .send(
+                "service_3ny4iee",
+                "template_qqt1cme",
+                {
+                    name: data.name,
+                    email: data.email,
+                    service: data.service,
+                    message: data.message,
+                },
+                "6YP6QVvcoX8N7gTCj"
+            )
+            .then(
+                (result) => {
+                    console.log("Email sent:", result.text);
+                    alert("Message sent successfully!");
+                    reset(); // clear form
+                },
+                (error) => {
+                    console.error("Email error:", error.text);
+                    alert("Failed to send message!");
+                }
+            );
+    };
+
     return (
         // 1. Outermost <section> tag (applying flex-grow for layout, and page-level padding)
         <section id='contact' >
@@ -90,7 +119,7 @@ const Contacat = () => {
                     {/* Contact Form Column */}
                     <div className="lg:col-span-7">
                         <div className="bg-base-200/50 border border-base-300 p-8 md:p-10 rounded-3xl backdrop-blur-sm shadow-xl">
-                            <form action="#" className="space-y-6">
+                            <form action="#" className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="form-control w-full">
                                         <label className="label" htmlFor="fullName">
@@ -101,7 +130,7 @@ const Contacat = () => {
                                             id="fullName"
                                             placeholder="Enter Your Name"
                                             className="input input-bordered input-primary bg-base-200 text-base-content w-full rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                            required
+                                            {...register("name")}
                                         />
                                     </div>
                                     <div className="form-control w-full">
@@ -113,7 +142,8 @@ const Contacat = () => {
                                             id="emailAddress"
                                             placeholder="Enter Your Email"
                                             className="input input-bordered input-primary bg-base-200 text-base-content w-full rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                            required
+
+                                            {...register("email")}
                                         />
                                     </div>
                                 </div>
@@ -125,7 +155,8 @@ const Contacat = () => {
                                         id="serviceType"
                                         className="select select-bordered select-primary bg-base-200 text-base-content w-full rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50"
                                         defaultValue=""
-                                        required
+
+                                        {...register("service")}
                                     >
                                         <option disabled value="">Select a service</option>
                                         <option value="web-development">Web Development</option>
@@ -144,7 +175,7 @@ const Contacat = () => {
                                         placeholder="Tell us about your project or inquiry..."
                                         rows="5"
                                         className="textarea textarea-bordered textarea-primary bg-base-200 text-base-content w-full rounded-xl resize-y focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                        required
+                                        {...register("message")}
                                     ></textarea>
                                 </div>
                                 <button
