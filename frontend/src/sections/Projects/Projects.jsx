@@ -19,7 +19,7 @@ const Projects = () => {
     return <h1 className='text-red'>{`${error.message}`}</h1>
   }
   return (
-    <section>
+    <section id='projects'>
       <Container>
         <div className='grid grid-cols-1 place-items-center gap-16'>
           {isPending

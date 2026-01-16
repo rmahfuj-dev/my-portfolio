@@ -3,10 +3,10 @@ import { FaSun, FaMoon } from 'react-icons/fa6'
 import { NavHashLink } from 'react-router-hash-link'
 
 const navigate = [
-  { link: "Home", to: "#homez" },
-  { link: "About", to: "#about" },
-  { link: "Projects", to: "#projects" },
-  { link: "Contact", to: "#contact" }
+  { link: "Home", to: "/#home" },
+  { link: "About", to: "/#about" },
+  { link: "Projects", to: "/#projects" },
+  { link: "Contact", to: "/#contact" }
 ]
 
 const Navbar = () => {

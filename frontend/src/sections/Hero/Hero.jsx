@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
-import { FaArrowRight, FaCircleDot, FaDownload, FaGithub, FaLinkedin, FaWhatsapp, FaX } from 'react-icons/fa6';
+import { FaArrowRight, FaCircleDot, FaDownload, FaGithub, FaLinkedin, FaTwitter, FaWhatsapp, FaX } from 'react-icons/fa6';
 import gsap from 'gsap';
 
 const MouseScrollIndicator = () => {
@@ -117,9 +117,9 @@ const Hero = () => {
             </div>
 
             {/* Social Icons */}
-            <div className="bg-base-100 hidden lg:flex flex-col gap-8 text-3xl px-4 py-6 absolute left-0 top-1/2 -translate-y-1/2 backdrop-blur-3xl rounded-r-md">
+            <div className="bg-base-300 hidden lg:flex flex-col gap-8 text-3xl px-4 py-6 absolute left-0 top-1/2 -translate-y-1/2 backdrop-blur-3xl rounded-r-md hover:shadow-[1px_1px_200px_white] border-white/10 border">
                 <FaLinkedin />
-                <FaX />
+                <FaTwitter />
                 <FaWhatsapp />
                 <FaGithub />
             </div>
